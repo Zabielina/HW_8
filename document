@@ -1,0 +1,38 @@
+CREATE TABLE Groups (
+id SERIAL PRIMARY KEY,
+ 
+Name VARCHAR(10) NOT NULL CHECK((length(Name)!=0)) UNIQUE,
+Rating INTEGER NOT NULL CHECK(Rating>=0 AND Rating<=5), 
+Year INTEGER NOT NULL CHECK( Year>=1 AND Year<=5)
+);  
+
+
+
+
+ CREATE TABLE Faculties (
+    Id serial PRIMARY KEY,
+    Name varchar(100) NOT NULL UNIQUE
+ );
+
+
+
+
+CREATE TABLE Departments (
+   Id serial PRIMARY KEY,
+    Financing  money NOT NULL DEFAULT 0 CHECK (CAST(Financing AS numeric) >= 0),
+     Name varchar(100) NOT NULL UNIQUE
+ );
+
+
+
+
+
+ CREATE TABLE Teachers (
+ id serial primary key,
+ 
+ EmploymentDate date NOT NULL CHECK (EmploymentDate >= '1990-01-01'),
+ NAME varchar NOT NULL CHECK((length(Name)!=0)) , 
+ PREMIUM money NOT NULL DEFAULT 0 CHECK (CAST(PREMIUM AS numeric) >= 0), 
+ Salary money NOT NULL CHECK (CAST(Salary AS numeric) > 0) , 
+ Surname varchar NOT NULL CHECK((length(Surname)!=0))
+);
